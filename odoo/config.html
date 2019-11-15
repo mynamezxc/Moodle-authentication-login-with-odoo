@@ -1,0 +1,104 @@
+<?php
+// set to defaults if undefined
+if (!isset ($config->db)) {
+    $config->db = '';
+}
+if (!isset ($config->url)) {
+    $config->url = '';
+}
+if (!isset ($config->password)) {
+    $config->password = '';
+}
+if (!isset ($config->user)) {
+    $config->user = '';
+}
+?>
+<table cellspacing="0" cellpadding="5" border="0">
+
+<tr valign="top" class="required">
+    <td align="right"><label for="db"><?php print_string('odoo_db', 'auth_odoo') ?>: </label></td>
+    <td>
+        <input name="db" id="db" type="text" size="30" value="<?php echo $config->db ?>" />
+        <?php
+
+        if (isset($err['db'])) {
+            echo $OUTPUT->error_text($err['db']);
+        }
+
+        ?>
+    </td>
+    <td>
+        <?php
+
+        print_string('odoo_db_desc', 'auth_odoo');
+        ?>
+    </td>
+</tr>
+
+<tr valign="top" class="required">
+    <td align="right"><label for="url"><?php print_string('odoo_url', 'auth_odoo') ?>: </label></td>
+    <td>
+        <input name="url" id="url" type="text" size="30" value="<?php echo $config->url ?>" />
+        <?php
+
+        if (isset($err['url'])) {
+            echo $OUTPUT->error_text($err['url']);
+        }
+
+        ?>
+    </td>
+    <td>
+        <?php
+
+        print_string('odoo_url_desc', 'auth_odoo');
+        ?>
+    </td>
+</tr>
+
+<tr valign="top" class="required">
+    <td align="right"><label for="user"><?php print_string('odoo_user', 'auth_odoo') ?>: </label></td>
+    <td>
+        <input name="user" id="user" type="text" size="30" value="<?php echo $config->user ?>" />
+        <?php
+
+        if (isset($err['user'])) {
+            echo $OUTPUT->error_text($err['user']);
+        }
+
+        ?>
+    </td>
+    <td>
+        <?php
+
+        print_string('odoo_user_desc', 'auth_odoo');
+        ?>
+    </td>
+</tr>
+
+<tr valign="top" class="required">
+    <td align="right"><label for="password"><?php print_string('odoo_password', 'auth_odoo') ?>: </label></td>
+    <td>
+        <input name="password" id="password" type="text" size="30" value="<?php echo $config->password ?>" />
+        <?php
+
+        if (isset($err['password'])) {
+            echo $OUTPUT->error_text($err['password']);
+        }
+
+        ?>
+    </td>
+    <td>
+        <?php
+
+        print_string('odoo_password_desc', 'auth_odoo');
+        ?>
+    </td>
+</tr>
+
+
+<?php
+
+print_auth_lock_options($this->authtype, $user_fields, get_string('auth_fieldlocks_help', 'auth'), false, false);
+
+?>
+</table>
